@@ -1,0 +1,32 @@
+{% extends "base_templ.html" %}
+
+{% block content %}
+
+    </br>
+    <div class="col-sm-3">
+        <form action="" method="GET">
+            {% csrf_token %}
+            <div  class="form">
+                {{ form.as_p }}
+            </div>
+            <div class="col-auto my-1">
+                <button type="submit" class="btn btn-success">Выбрать</button>
+                <a class="btn btn-danger" href="/" role="button">Сбросить</a>
+            </div>
+        </form>
+        <p>* год не старее указанного</p>
+    </div>
+        
+    <div class="col-sm-9">
+        <h1>Полученный список</h1>
+        <ul>
+            {% if car_list %}
+                {% for car in car_list %}
+                    <li>{{ car.id }} - {{ car.brand }} - {{ car.car_model }} - {{ car.year }} - {{ car.color }} </li>
+                {% endfor %}
+            {% else %}
+                <h6> По вашему запросу автомобилей не найдено </h6>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

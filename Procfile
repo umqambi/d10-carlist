@@ -1,0 +1,1 @@
+web: gunicorn catalogd10.wsgi
